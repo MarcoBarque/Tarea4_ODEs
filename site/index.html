@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Ordinary Differential Equations</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Aproximation of ordinary differential equations";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Ordinary Differential Equations
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Aproximation of ordinary differential equations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#eulers-method">Euler's method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#runge-kutta-method">Runge Kutta Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#second-order-rk2">Second Order (RK2)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fourth-order-rk4">Fourth Order (RK4)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reference.html">How to use</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Ordinary Differential Equations</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Aproximation of ordinary differential equations</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aproximation-of-ordinary-differential-equations">Aproximation of ordinary differential equations</h1>
+<p><strong>By Marco Barquero(C30970) and Andres Chacon (C32026)</strong></p>
+<p>In physics is common to encounter differential equations that have no analitical solution. This kind of differential equations are resolved by using aproximations. An example of one these equations is:</p>
+<p>
+<script type="math/tex; mode=display"> \frac{dy}{dx}=x^4y^2+\frac{x}{y^3} </script>
+</p>
+<p>In general, the methods that will be described in this article can only be used if the differential equations has the form:</p>
+<p>
+<script type="math/tex; mode=display"> \frac{dy}{dx}=f(x,y) </script>
+</p>
+<p>For these methods, the equation described before must satisfy two conditions:</p>
+<ul>
+<li>The function <script type="math/tex">f</script>, must be a function of <script type="math/tex">x</script> and <script type="math/tex">y</script>, so <script type="math/tex">f=f(x,y)</script>.</li>
+<li>The dependant variable evaluated in <script type="math/tex">x=x_{0}</script> must exist and be a known value. So <script type="math/tex">y(x=x_{0})=y_{0}</script>. </li>
+</ul>
+<p>The numeric methods for the aproximation of the differential equations are:</p>
+<ul>
+<li>Euler's method</li>
+<li>Runge Kutta method of second order</li>
+<li>Runge Kutta method of fourth order</li>
+</ul>
+<p>It is important to mention that all these methods have an associated error, the margin of the error is determinated by the magnitude of the 'steps'. The step is the value of the amount of change of the independet variable, in the optimal case these steps would be inifitesimal so the derivative of the function could be calculated, however, it would be impossible to compute an aproximation with infitesimal steps. So, is important to consider the value of the steps acordingly to the method that will be used and the precision required.</p>
+<h2 id="eulers-method">Euler's method</h2>
+<p>This aproximation is based on the Taylor Series of a function <script type="math/tex">y(x+h)</script>, where <script type="math/tex">h</script> is the 'step' mentiond before. One can assume that the step <script type="math/tex">h</script> is inifitesimal, so the Taylor Series of the function can be aproximated to:</p>
+<p>
+<script type="math/tex; mode=display"> y(x+h)=y(x)+hf(x,y) </script>
+</p>
+<p>This method is the least precise of the three but is the fastest because requieres just one calculation per iteration. To be as precise as the Runge Kutta method it needs smaller steps and therefore a lot more iterations. </p>
+<h2 id="runge-kutta-method">Runge Kutta Method</h2>
+<p>The method will be described for second and fourth order. This method requires more time to be computed, but the precision gained in the aproximation is worth it depending on the size of interval and the function <script type="math/tex">f(x,y)</script>.</p>
+<h4 id="second-order-rk2">Second Order (RK2)</h4>
+<p>As in Euler's method, this aproximation is obtained from the Taylor Series of a function <script type="math/tex">y(x+h)</script>. The value of the function in a given iteration is decribed by:</p>
+<p>
+<script type="math/tex; mode=display"> y(x+h)=y(x)+hk_{2} </script>
+</p>
+<p>Where <script type="math/tex">k_{i}</script> are calculated as:</p>
+<ul>
+<li>
+<script type="math/tex">k_{1}= f(x,y)</script>
+</li>
+<li>
+<script type="math/tex">k_{2}= f(x+\frac{h}{2}, y+\frac{k_{1}}{2})</script>
+</li>
+</ul>
+<h4 id="fourth-order-rk4">Fourth Order (RK4)</h4>
+<p>This method is the most precise of the three, if possible, one should use this method. The reason why it is not always viable is because it requieres more calculations per iteration. The aproximation of <script type="math/tex">y(x+h)</script> through this method is:</p>
+<p>
+<script type="math/tex; mode=display">y(x+h)=y(x)+\frac{h}{6}(k_{1}+2k_{2}+2k_{3}+k_{4})</script>
+</p>
+<p>Where <script type="math/tex">k_{i}</script> are:</p>
+<ul>
+<li>
+<script type="math/tex">k_{1} = f(x,y)</script>
+</li>
+<li>
+<script type="math/tex">k_{2} = f(x+\frac{h}{2}, y+\frac{k_{1}}{2})</script>
+</li>
+<li>
+<script type="math/tex">k_{3} = f(x+\frac{h}{2}, y+\frac{k_{2}}{2})</script>
+</li>
+<li>
+<script type="math/tex">k_{4} = f(x+h,y+k_{3})</script>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="reference.html" class="btn btn-neutral float-right" title="How to use">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="reference.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.0
+Build Date UTC : 2024-06-25 23:49:06.628395+00:00
+-->

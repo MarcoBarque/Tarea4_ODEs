@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>How to use - Ordinary Differential Equations</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "How to use";
+        var mkdocs_page_input_path = "reference.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> Ordinary Differential Equations
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Aproximation of ordinary differential equations</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">How to use</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ode">ode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ode.euler">euler</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ode.rk2">rk2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ode.rk4">rk4</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ode.step">step</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Ordinary Differential Equations</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">How to use</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="how-to-use">How to use</h1>
+<p>Here is presented general description of how these methods were build as python functions. Its important to mention that to use correctly these methods they need to be used inside a loop because they only calculate a single value of y(x) each time they are called.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="ode"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ode.euler" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates a single point of <script type="math/tex">y(x)</script> through an aproximation using Euler's method.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code>function</code>)
+              –
+              <div class="doc-md-description">
+                <p>The function f(x,y) that appears on the right side of the differential equation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>x_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of x, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>y_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of y, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The size of each step taken through the iteration that approximates the function <script type="math/tex">y(x)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>y_nph</code></b>(                  <code>float</code>
+)              –
+              <div class="doc-md-description">
+                <p>Value of the point y_nph, this value is <script type="math/tex">y(x+h)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>ode.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates a single point of \(y(x)\) through an aproximation using Euler&#39;s method.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        f (function): The function f(x,y) that appears on the right side of the differential equation.</span>
+<span class="sd">        x_n (float): The previous value of x, with this variable y_nph will be approximated.</span>
+<span class="sd">        y_n (float): The previous value of y, with this variable y_nph will be approximated.</span>
+<span class="sd">        h (float): The size of each step taken through the iteration that approximates the function \(y(x)\).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        y_nph (float): Value of the point y_nph, this value is \(y(x+h)\).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x_n</span><span class="p">,</span><span class="n">y_n</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ode.rk2" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates a single point of <script type="math/tex">y(x)</script> through an aproximation using the Runge Kutta method of second order.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code>function</code>)
+              –
+              <div class="doc-md-description">
+                <p>The function f(x,y) that appears on the right side of the differential equation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>x_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of x, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>y_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of y, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The size of each step taken through the iteration that approximates the function <script type="math/tex">y(x)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>y_nph</code></b>(                  <code>float</code>
+)              –
+              <div class="doc-md-description">
+                <p>Value of the point y_nph, this value is <script type="math/tex">y(x+h)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>ode.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates a single point of \(y(x)\) through an aproximation using the Runge Kutta method of second order.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        f (function): The function f(x,y) that appears on the right side of the differential equation.</span>
+<span class="sd">        x_n (float): The previous value of x, with this variable y_nph will be approximated.</span>
+<span class="sd">        y_n (float): The previous value of y, with this variable y_nph will be approximated.</span>
+<span class="sd">        h (float): The size of each step taken through the iteration that approximates the function \(y(x)\).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        y_nph (float): Value of the point y_nph, this value is \(y(x+h)\).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">k1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k2</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ode.rk4" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates a single point of <script type="math/tex">y(x)</script> through an aproximation using the Runge Kutta method of fourth order.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code>function</code>)
+              –
+              <div class="doc-md-description">
+                <p>The function f(x,y) that appears on the right side of the differential equation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>x_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of x, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>y_n</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The previous value of y, with this variable y_nph will be approximated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>The size of each step taken through the iteration that approximates the function <script type="math/tex">y(x)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>y_nph</code></b>(                  <code>float</code>
+)              –
+              <div class="doc-md-description">
+                <p>Value of the point y_nph, this value is <script type="math/tex">y(x+h)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>ode.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates a single point of \(y(x)\) through an aproximation using the Runge Kutta method of fourth order.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        f (function): The function f(x,y) that appears on the right side of the differential equation.</span>
+<span class="sd">        x_n (float): The previous value of x, with this variable y_nph will be approximated.</span>
+<span class="sd">        y_n (float): The previous value of y, with this variable y_nph will be approximated.</span>
+<span class="sd">        h (float): The size of each step taken through the iteration that approximates the function \(y(x)\).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        y_nph (float): Value of the point y_nph, this value is \(y(x+h)\).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">k2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_n</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_n</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ode.step" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">step</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates the size of the step taken in a given interval <script type="math/tex">[a,b]</script>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>a</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>Point where the interval begins.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>Point where the interval ends.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>N</code></b>
+                  (<code>int</code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of steps wanted in the interval.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>h</code></b>(                  <code>float</code>
+)              –
+              <div class="doc-md-description">
+                <p>Size of the steps that will be taken in the approximation of the function <script type="math/tex">y(x)</script>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>ode.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the size of the step taken in a given interval \([a,b]\).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        a (float): Point where the interval begins.</span>
+<span class="sd">        b (float): Point where the interval ends.</span>
+<span class="sd">        N (int): Number of steps wanted in the interval.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        h (float): Size of the steps that will be taken in the approximation of the function \(y(x)\).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">interval</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Aproximation of ordinary differential equations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
